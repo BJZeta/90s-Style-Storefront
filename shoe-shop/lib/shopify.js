@@ -1,8 +1,8 @@
-const domain = process.env.SHOPIFY_STORE_DOMAIN
-const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN
+const domain = process.env.SHOPIFY_STORE_DOMAIN;
+const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN;
 
 async function ShopifyData(query) {
-  const URL = `https://${domain}/api/2021-07/graphql.json`
+  const URL = `https://${domain}/api/2022-01/graphql.json`;
 
   const options = {
     endpoint: URL,
@@ -12,51 +12,51 @@ async function ShopifyData(query) {
       "Accept": "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ query })
-  }
+    body: JSON.stringify({ query }),
+  };
 
   try {
-    const data = await fetch(URL, options).then(response => {
-      return response.json()
-    })
+    const data = await fetch(URL, options).then((response) => {
+      return response.json();
+    });
 
-    return data
+    return data;
   } catch (error) {
-    throw new Error("Products not fetched")
+    throw new Error("Products not fetched");
   }
 }
 
-export async function getAllProducts() {
+export async function getHomePageProducts() {
   const query = `
   {
-  products(first: 25) {
-    edges {
-      node {
-        id
-        title
-        handle
-        priceRange {
-          minVariantPrice {
-            amount
-          }
-        }
-        images(first: 5) {
-          edges {
-            node {
-              originalSrc
-              altText
+    collection(handle: "frontpage") {
+      title
+      products(first: 5) {
+        edges {
+          node {
+            id
+            title
+            handle
+            images(first: 5) {
+              edges {
+                node {
+                  url
+                }
+              }
             }
           }
         }
       }
     }
   }
-}
-`
+  
+`;
 
-  const response = await ShopifyData(query)
+  const response = await ShopifyData(query);
 
-  const allProducts = response.data.products.edges ? response.data.products.edges : []
+  const homePageProducts = response.data.collection.products.edges
+    ? response.data.collection.products.edges
+    : [];
 
-  return allProducts
+  return homePageProducts;
 }
