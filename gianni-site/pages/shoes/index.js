@@ -1,20 +1,18 @@
-// import { useContext } from "react";
-// import Layout from "../../components/Layout";
-// import { ShopContext } from "../../context/shopContext";
+import Layout from "../../components/Layout";
 
-// export default function ShoesPage({ products }) {
-//   return (
-//     <Layout
-//       title="Gianni's Collection"
-//       description="A full collection of vintage, classic shoes from Gianni"
-//     >
-//       <h1>All Products</h1>
-//       <div className="all-shoes">
-//         {console.log(products)}
-//       </div>
-//     </Layout>
-//   );
-// }
+export default function ShoesPage({  }) {
+  return (
+    <Layout
+      title="Gianni's Collection"
+      description="A full collection of vintage, classic shoes from Gianni"
+    >
+      <h1>All Products</h1>
+      <div className="all-shoes">
+        <h2>Shoes</h2>
+      </div>
+    </Layout>
+  );
+}
 
 // export async function getStaticProps() {
   
