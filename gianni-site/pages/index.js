@@ -6,9 +6,10 @@ export default function Home({ products }) {
   return (
     <Layout>
       <div>
-
-        <h1>Welcome to Gianni's Shop</h1>
-        <p>Bitches.</p>
+        <div className="grid text-center text-6xl italic justify-center pt-14">
+          <h1>Welcome to Gianni's Shop</h1>
+          <p>Bitches.</p>
+        </div>
 
         <div className="text-3xl">
           <ProductList products={products} />

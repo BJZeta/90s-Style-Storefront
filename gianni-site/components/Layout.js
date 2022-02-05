@@ -3,7 +3,7 @@ import Header from "./Header";
 
 export default function Layout({ title, keywords, description, children }) {
   return (
-    <div>
+    <div className="bg-space-pattern bg-fixed">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -12,9 +12,9 @@ export default function Layout({ title, keywords, description, children }) {
 
       <Header />
 
-      <div className="main-content">{children}</div>
+      <main className="bg-white bg-opacity-30">{children}</main>
 
-      <footer>
+      <footer className="bg-red text-red-50 text-center text-2xl mt-52 pb-7">
         <p>Copyright &copy; 2022</p>
       </footer>
     </div>

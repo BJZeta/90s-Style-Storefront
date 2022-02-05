@@ -4,7 +4,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "space-pattern": "url('/img/space.gif')",
+      },
+    },
   },
   plugins: [],
 };
