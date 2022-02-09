@@ -9,12 +9,12 @@ export default function ProductCard({ product }) {
   const { url } = product.node.images.edges[0].node;
 
   return (
-    <Link href={`/shoes/${handle}`}>
+    <Link href={`/products/${handle}`}>
       <a className="">
         <div className="relative h-80 w-full border-4 border-dashed border-black rounded">
           <Image src={url} alt={title} layout="fill" objectFit="cover"  />
         </div>
-        <h2 className="text-gray-900 hover:text-slate-500 text-center">{title}</h2>
+        <h2 className="text-gray-900 text-3xl hover:text-slate-500 text-center">{title}</h2>
       </a>
     </Link>
   );

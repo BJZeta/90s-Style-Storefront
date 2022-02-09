@@ -12,7 +12,7 @@ export default function Layout({ title, keywords, description, children }) {
 
       <Header />
 
-      <main className="bg-white bg-opacity-30">{children}</main>
+      <main className="bg-white bg-opacity-30 mt-20">{children}</main>
 
       <footer className="bg-red text-red-50 text-center text-2xl mt-52 pb-7">
         <p>Copyright &copy; 2022</p>
@@ -22,7 +22,7 @@ export default function Layout({ title, keywords, description, children }) {
 }
 
 Layout.defaultProps = {
-  title: "Gianni's Shop",
+  title: "Gianni's Closet",
   description: "A wide and valuable selection of shoes and clothing",
-  keywords: "shoes, nike, clothes",
+  keywords: "shoes, nike, clothes, shirts",
 };

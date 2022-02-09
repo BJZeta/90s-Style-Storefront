@@ -9,7 +9,7 @@ async function ShopifyData(query) {
     method: "POST",
     headers: {
       "X-Shopify-Storefront-Access-Token": storefrontAccessToken,
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ query }),
@@ -59,4 +59,60 @@ export async function getHomePageProducts() {
     : [];
 
   return homePageProducts;
+}
+
+export async function getAllProducts() {
+  const query = `
+  {
+    products(first: 25) {
+      edges {
+        node {
+          id
+          handle
+        }
+      }
+    }
+  }
+  `;
+
+  const response = await ShopifyData(query);
+
+  const slugs = response.data.products.edges
+    ? response.data.products.edges
+    : [];
+
+  return slugs;
+}
+
+export async function getSingleProduct(handle) {
+  const query = `
+  {
+    productByHandle(handle: "${handle}") {
+      id
+      title
+      description
+      images(first: 5) {
+        edges {
+          node {
+            id
+            url
+          }
+        }
+      }
+      priceRange {
+        maxVariantPrice {
+          amount
+        }
+      }
+    }
+  }
+  `;
+
+  const response = await ShopifyData(query);
+
+  const product = response.data.productByHandle
+    ? response.data.productByHandle
+    : {};
+
+  return product;
 }
